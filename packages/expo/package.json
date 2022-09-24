@@ -1,0 +1,28 @@
+{
+  "name": "@-/expo",
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "expo start",
+    "tsc": "tsc",
+    "tsc:dev": "tsc --noEmit --watch --preserveWatchOutput"
+  },
+  "dependencies": {
+    "expo": "^46.0.10",
+    "expo-constants": "^13.2.4",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.5",
+    "react-native-webview": "11.23.0",
+    "typescript": "4.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@types/react": "~18.0.14",
+    "@types/react-native": "~0.69.1"
+  },
+  "volta": {
+    "node": "16.17.0",
+    "yarn": "1.22.19"
+  }
+}
