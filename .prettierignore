@@ -1,2 +1,4 @@
 pnpm-lock.yaml
-packages/expo/.expo
+.expo
+build
+dist

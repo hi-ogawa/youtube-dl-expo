@@ -4,6 +4,7 @@
   "main": "./src/index.ts",
   "scripts": {
     "dev": "expo start",
+    "build": "expo export --platform android",
     "tsc": "tsc",
     "tsc:dev": "tsc --noEmit --watch --preserveWatchOutput"
   },
