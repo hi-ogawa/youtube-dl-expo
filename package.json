@@ -1,18 +1,14 @@
 {
   "scripts": {
-    "setup": "pnpm i && npm -C packages/expo i",
-    "setup:ci": "pnpm i --frozen-lockfile && npm -C packages/expo ci",
-    "clean": "run-s clean:*",
-    "clean:node_modules": "rm -rf node_modules packages/**/node_modules",
+    "deps": "pnpm i && npm -C packages/expo i",
+    "deps:ci": "pnpm i --frozen-lockfile && npm -C packages/expo ci",
     "dev": "run-p dev:*",
     "dev:expo": "npm -C packages/expo run dev",
     "dev:client": "npm -C packages/client run dev",
     "build": "run-s build:*",
     "build:expo": "npm -C packages/expo run build",
     "build:client": "npm -C packages/client run build",
-    "tsc": "run-p tsc:*",
-    "tsc:expo": "npm -C packages/expo run tsc",
-    "tsc:client": "tsc -b packages/client",
+    "tsc": "tsc -b packages/expo packages/expo/packages/common packages/client",
     "lint": "run-s prettier eslint",
     "lint:check": "run-s prettier:check eslint:check",
     "eslint": "npm run eslint:check -- --fix",
@@ -21,6 +17,7 @@
     "prettier:check": "npm run prettier -- --check"
   },
   "devDependencies": {
+    "@tsconfig/strictest": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "eslint": "^8.23.1",

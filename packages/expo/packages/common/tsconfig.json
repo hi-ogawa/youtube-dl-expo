@@ -1,0 +1,13 @@
+{
+  "extends": "@tsconfig/strictest",
+  "include": ["src"],
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "ES2022",
+    "module": "ES6",
+    "declaration": true,
+    "declarationMap": true
+  }
+}

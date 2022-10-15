@@ -15,5 +15,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "importsNotUsedAsValues": "error"
-  }
+  },
+  "references": [{ "path": "./packages/common" }]
 }

@@ -9,13 +9,13 @@
     "tsc:dev": "tsc --noEmit --watch --preserveWatchOutput"
   },
   "dependencies": {
-    "expo": "^46.0.10",
+    "@-/common": "file:./packages/common",
+    "expo": "46.0.10",
     "expo-constants": "^13.2.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-native": "0.69.5",
-    "react-native-webview": "11.23.0",
-    "typescript": "4.8.3"
+    "react-native": "0.69.6",
+    "react-native-webview": "11.23.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
