@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { Icon } from "./icon";
-import { invokeIpc } from "./ipc";
+import { ipcClient } from "./ipc";
 import { ReactQueryProvidersCustom } from "./react-query-provider-custom";
 import {
   VideoInfo,
@@ -32,8 +32,8 @@ function App() {
     onSuccess: (info) => {
       setVideoInfo(info);
     },
-    onError: () => {
-      toast.error("failed to load video info");
+    onError: (e: any) => {
+      toast.error("failed to load video info:\n" + e.toString());
     },
   });
 
@@ -109,7 +109,7 @@ function App() {
 }
 
 async function fetchVideoInfo(videoId: string): Promise<VideoInfo> {
-  const res = await invokeIpc("fetch-proxy", {
+  const res = await ipcClient.invokeIpc("fetch-proxy", {
     fetchArgs: getVideoInfoFetchArgs(videoId),
   });
   return parseVideoInfo(JSON.parse(res.data));

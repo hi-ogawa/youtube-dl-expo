@@ -1,8 +1,9 @@
+import { toIpcClientReceiveEval } from "@-/common";
 import Constants from "expo-constants";
 import React from "react";
 import { View } from "react-native";
 import { WebView } from "react-native-webview";
-import { handleIpc, toResponseInjection } from "./ipc";
+import { ipcServer } from "./ipc";
 
 export function App() {
   const refWebView = React.useRef<WebView>(null);
@@ -14,8 +15,10 @@ export function App() {
         source={{ uri: WEB_VIEW_URI }}
         onMessage={async (e) => {
           const request = JSON.parse(e.nativeEvent.data);
-          const response = await handleIpc(request);
-          refWebView.current?.injectJavaScript(toResponseInjection(response));
+          const response = await ipcServer.handle(request);
+          refWebView.current?.injectJavaScript(
+            toIpcClientReceiveEval(response)
+          );
         }}
       />
     </View>

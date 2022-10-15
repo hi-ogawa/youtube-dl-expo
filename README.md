@@ -4,7 +4,8 @@ porting https://github.com/hi-ogawa/youtube-dl-web to expo mobile app based on h
 
 ```sh
 # development
-npm run setup
+npm run deps # install dependencies with npm and pnpm
+npm run tsc # build common package
 npm run dev
 ```
 

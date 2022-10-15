@@ -9,5 +9,6 @@
     "lib": ["es2021", "dom"],
     "types": ["vite/types/importMeta", "./types/react-native-webview"],
     "jsx": "react-jsx"
-  }
+  },
+  "references": [{ "path": "../expo/packages/common" }]
 }
