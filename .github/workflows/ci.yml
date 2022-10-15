@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "16.17.0"
-      - run: npm run setup:ci
+      - run: npm run deps:ci
       - run: npm run lint
       - run: npm run tsc
       - run: npm run build
