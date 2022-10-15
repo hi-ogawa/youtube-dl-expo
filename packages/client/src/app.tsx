@@ -77,7 +77,9 @@ function App() {
               {videoInfo.formats.map((f) => (
                 <tr key={f.url + f.format_id}>
                   <td>
-                    <Icon name="System/download-2-line" className="w-4 h-4" />
+                    <a href={f.url} target="_blank">
+                      <Icon name="System/download-2-line" className="w-4 h-4" />
+                    </a>
                   </td>
                   <td>
                     {
