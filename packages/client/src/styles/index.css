@@ -1,0 +1,20 @@
+/* full height and background color */
+html,
+body,
+#root {
+  @apply h-full bg-gray-50;
+}
+
+/* padding to avoid overlapped by device header menu */
+body {
+  @apply pt-6;
+}
+
+.table th,
+td {
+  @apply p-1 px-2;
+}
+
+.table tr {
+  @apply border-b;
+}

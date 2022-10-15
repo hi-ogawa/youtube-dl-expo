@@ -1,7 +1,8 @@
 import "virtual:windi.css";
+import "./styles/index.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./app";
+import { Root } from "./app";
 
 function main() {
   const el = document.querySelector("#root");
@@ -9,7 +10,7 @@ function main() {
     throw new Error("invalid #root");
   }
   const root = createRoot(el);
-  root.render(React.createElement(App));
+  root.render(React.createElement(Root));
 }
 
 main();

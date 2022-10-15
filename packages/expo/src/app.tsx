@@ -1,46 +1,30 @@
 import Constants from "expo-constants";
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { View } from "react-native";
 import { WebView } from "react-native-webview";
+import { handleIpc, toResponseInjection } from "./ipc";
 
 export function App() {
   const refWebView = React.useRef<WebView>(null);
 
   return (
     <View style={{ flex: 1 }}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "#eee",
-          justifyContent: "center",
-          alignItems: "center",
+      <WebView
+        ref={refWebView}
+        source={{ uri: WEB_VIEW_URI }}
+        onMessage={async (e) => {
+          const request = JSON.parse(e.nativeEvent.data);
+          const response = await handleIpc(request);
+          refWebView.current?.injectJavaScript(toResponseInjection(response));
         }}
-      >
-        <Text style={{ marginBottom: 8 }}>Hello Expo</Text>
-        <Button
-          title="click-expo"
-          onPress={() => {
-            refWebView.current?.injectJavaScript(
-              `window.alert("expo to vite");`
-            );
-          }}
-        />
-      </View>
-      <View style={{ flex: 1 }}>
-        <WebView
-          ref={refWebView}
-          source={{ uri: WEB_VIEW_URI }}
-          onMessage={(e) => {
-            console.log(e.nativeEvent.data);
-            refWebView.current?.injectJavaScript(`
-              window.alert("vite to expo to vite");
-            `);
-          }}
-        />
-      </View>
+      />
     </View>
   );
 }
+
+//
+// web view uri
+//
 
 function getWebViewUri(): string {
   if (Constants.manifest?.packagerOpts?.dev) {

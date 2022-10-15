@@ -3,6 +3,7 @@
   "include": ["./src"],
   "compilerOptions": {
     "noEmit": true,
+    "moduleResolution": "node",
     "module": "esnext",
     "target": "es2021",
     "lib": ["es2021", "dom"],
