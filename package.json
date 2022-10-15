@@ -14,7 +14,7 @@
     "eslint": "npm run eslint:check -- --fix",
     "eslint:check": "eslint . --cache --cache-location node_modules/.cache/.eslintcache --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --write --cache .",
-    "prettier:check": "npm run prettier -- --check"
+    "prettier:check": "prettier --check --cache ."
   },
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.2",
