@@ -9,7 +9,7 @@ export function App() {
   const refWebView = React.useRef<WebView>(null);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, marginTop: Constants.statusBarHeight }}>
       <WebView
         ref={refWebView}
         source={{ uri: WEB_VIEW_URI }}
