@@ -11,18 +11,13 @@ export class IpcClient {
   private pendings: { [id: string]: (message: IpcResponseMessage) => void } =
     {};
 
-  constructor(private postMessage: (message: string) => void) {}
+  constructor(private postMessage: (message: IpcRequestMessage) => void) {}
 
   async invokeIpc<T extends IpcEndpoint>(
     endpoint: T,
     request: IpcDefinition[T]["request"]
   ): Promise<IpcDefinition[T]["response"]> {
     const id = String(++this.lastRequestId);
-    const requestMessage: IpcRequestMessage = {
-      id,
-      endpoint,
-      data: request,
-    };
     return new Promise((resolve, reject) => {
       this.pendings[id] = (responseMessage: IpcResponseMessage) => {
         if (responseMessage.ok) {
@@ -31,7 +26,11 @@ export class IpcClient {
           reject(responseMessage.data);
         }
       };
-      this.postMessage(JSON.stringify(requestMessage));
+      this.postMessage({
+        id,
+        endpoint,
+        data: request,
+      });
     });
   }
 
