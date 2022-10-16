@@ -1,4 +1,8 @@
-import { IPC_CLIENT_RECEIVE_FUNCTION, IpcClient } from "@-/common";
+import {
+  IPC_CLIENT_RECEIVE_FUNCTION,
+  IpcClient,
+  IpcRequestMessage,
+} from "@-/common";
 
 // packages/electron/src/ipc-common.ts
 const PRELOAD_API_NAME = "__PRELOAD_API__";
@@ -9,15 +13,17 @@ declare const ReactNativeWebView: {
   postMessage: (data: string) => void;
 };
 
-let postMessage: (message: string) => void;
+let postMessage: (message: IpcRequestMessage) => void;
 
 if (PRELOAD_API) {
-  postMessage = async (message: string) => {
+  postMessage = async (message) => {
     const response = await PRELOAD_API.ipcPostMessage(message);
     (globalThis as any)[IPC_CLIENT_RECEIVE_FUNCTION](response);
   };
 } else {
-  postMessage = ReactNativeWebView.postMessage.bind(ReactNativeWebView);
+  postMessage = async (message) => {
+    ReactNativeWebView.postMessage(JSON.stringify(message));
+  };
 }
 
 export const ipcClient = new IpcClient(postMessage);

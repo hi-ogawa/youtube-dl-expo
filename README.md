@@ -9,4 +9,4 @@ npm run tsc # build common package
 npm run dev
 ```
 
-![Screenshot from 2022-10-15 16-47-40](https://user-images.githubusercontent.com/4232207/195975963-4b3af8c5-aa1e-4a4f-8711-61178edf1ea5.png)
+![image](https://user-images.githubusercontent.com/4232207/196020621-06e1b0cf-29b3-40fd-b71a-7305e01e5e58.png)
